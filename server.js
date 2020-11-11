@@ -1,9 +1,14 @@
+// dependencies
 const express = require("express");
 require("dotenv").config();
 const path = require("path");
 const ejs = require("ejs");
+const mongoose = require("mongoose");
 
+// static data
 const data = require("./models/staticData");
+
+// mongoose
 
 const PORT = process.env.PORT;
 // initialize the app
@@ -16,8 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.render("index.ejs", {
-    title: "Article-Title1",
-    author: "Zafer Ozcan",
+    articles: data,
   });
 });
 
