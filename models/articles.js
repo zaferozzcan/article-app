@@ -6,3 +6,7 @@ const articleSchema = mongoose.Schema({
   author: { type: String, default: "Anonymous" },
   liked: { type: Number, default: 0 },
 });
+
+const Article = mongoose.model("Article", articleSchema);
+
+module.exports = Article;

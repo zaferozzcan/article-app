@@ -5,12 +5,32 @@ const path = require("path");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 
+// import model
+const Article = require("./models/articles");
+
+// config
+const PORT = process.env.PORT;
+mongoURI = process.env.mongoURI;
+const db = mongoose.connection;
+
 // static data
 const data = require("./models/staticData");
 
-// mongoose
+// database-mongoDB connection
+mongoose.connect(
+  mongoURI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  },
+  () => {
+    console.log("👉🏼The connection with mongod is established🤟🏼🎼");
+  }
+);
+db.on("error", (err) => console.log(err.message + " is mongod not running?"));
+db.on("disconnected", () => console.log("mongo disconnected"));
 
-const PORT = process.env.PORT;
 // initialize the app
 const app = express();
 
