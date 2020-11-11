@@ -13,8 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.send(`<h1>Hello World</h1>`);
-  console.log(path);
+  res.render("index.ejs", {
+    title: "Article-Title1",
+    author: "Zafer Ozcan",
+  });
 });
 
 //  server listener
