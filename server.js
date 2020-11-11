@@ -3,6 +3,8 @@ require("dotenv").config();
 const path = require("path");
 const ejs = require("ejs");
 
+const data = require("./models/staticData");
+
 const PORT = process.env.PORT;
 // initialize the app
 const app = express();
