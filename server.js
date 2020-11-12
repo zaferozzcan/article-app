@@ -45,6 +45,10 @@ app.get("/", (req, res) => {
   });
 });
 
+// controllers
+const articleController = require("./controllers/article_controller");
+app.use("/article", articleController);
+
 //  server listener
 app.listen(PORT, () => {
   console.log("👻Server is running on port " + PORT);
