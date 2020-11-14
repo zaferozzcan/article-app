@@ -33,9 +33,9 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 
 // initialize the app
 const app = express();
-
-app.set("views engine", ejs);
 // middleware
+app.set("views engine", ejs);
+app.use(express.static(__dirname + "/public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
 
 // controllers
 const articleController = require("./controllers/article_controller");
-app.use("/article", articleController);
+app.use("/articles", articleController);
 
 //  server listener
 app.listen(PORT, () => {

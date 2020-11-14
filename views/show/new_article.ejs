@@ -1,15 +1,21 @@
 <%- include("../partials/header.ejs") %> <%- include("../partials/navbar.ejs")%>
 <div class="new-article-container">
   <div class="new-article-container-inner">
-    <form action="">
+    <form action="/articles/new" method="POST">
       <fieldset class="article">
-        <legend>Article Information</legend>
+        <legend>New Article</legend>
         <!-- title -->
         <label for="title"></label>
         <input type="text" name="title" id="title" />
         <!-- content -->
         <label for="content"></label>
-        <input type="text" name="content" id="content" />
+        <textarea
+          type="text"
+          name="content"
+          id="content"
+          cols="30"
+          rows="10"
+        ></textarea>
         <input type="submit" value="Submit" />
       </fieldset>
     </form>
