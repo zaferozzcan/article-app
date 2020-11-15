@@ -28,10 +28,24 @@ articleRoute.post("/new", (req, res) => {
       res.status(400).json({ error: err.message });
     }
   });
+
   req.body.author.value = "";
   req.body.title.value = "";
   req.body.content.value = "";
   res.redirect("/");
+});
+
+// get individual article
+articleRoute.get("/:id", (req, res) => {
+  Article.findById(req.params.id, (err, data) => {
+    if (!err) {
+      res.render("../views/show/show_article.ejs", {
+        article: data,
+      });
+    } else {
+      res.status(400).json({ error: err.message });
+    }
+  });
 });
 
 module.exports = articleRoute;
