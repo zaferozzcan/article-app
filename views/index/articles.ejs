@@ -8,7 +8,7 @@
         <h2><%= articles[i].title %></h2>
         <p><%= articles[i].content.substring(0,300) %></p>
         <p>
-          <a class="btn btn-secondary" href="#" role="button"
+          <a class="btn btn-secondary" href="/articles/<%= articles[i]._id%> " role="button"
             >View details &raquo;</a
           >
         </p>

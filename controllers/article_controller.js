@@ -7,8 +7,27 @@ const { model } = require("../models/articles");
 const articleRoute = express.Router();
 
 articleRoute.get("/", (req, res) => {
-  res.render("../views/index/articles.ejs", {
-    articles: staticData,
+  Article.find({}, (err, data) => {
+    if (!err) {
+      res.render("../views/index/articles.ejs", {
+        articles: data,
+      });
+    } else {
+      res.status(400).json({ error: err.message });
+    }
+  });
+});
+
+// get individual article
+articleRoute.get("/:id", (req, res) => {
+  Article.findById(req.params.id, (err, data) => {
+    if (!err) {
+      res.render("../views/show/show_article.ejs", {
+        article: data,
+      });
+    } else {
+      res.status(400).json({ error: err.message });
+    }
   });
 });
 
@@ -33,19 +52,6 @@ articleRoute.post("/new", (req, res) => {
   req.body.title.value = "";
   req.body.content.value = "";
   res.redirect("/");
-});
-
-// get individual article
-articleRoute.get("/:id", (req, res) => {
-  Article.findById(req.params.id, (err, data) => {
-    if (!err) {
-      res.render("../views/show/show_article.ejs", {
-        article: data,
-      });
-    } else {
-      res.status(400).json({ error: err.message });
-    }
-  });
 });
 
 module.exports = articleRoute;
