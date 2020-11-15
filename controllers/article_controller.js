@@ -54,4 +54,25 @@ articleRoute.post("/new", (req, res) => {
   res.redirect("/");
 });
 
+articleRoute.get("/edit/:id", (req, res) => {
+  Article.findById(req.params.id, (err, data) => {
+    res.render("../views/show/edit_article.ejs", {
+      article: data,
+    });
+  });
+});
+
+//edit article
+articleRoute.put("/edit/:id", (req, res) => {
+  Article.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+    if (!err) {
+      res.send(200).json(data);
+      console.log("aericle is updated");
+    } else {
+      res.status(400).json({ error: err.message });
+      console.log("update err");
+    }
+  });
+});
+
 module.exports = articleRoute;

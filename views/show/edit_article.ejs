@@ -1,0 +1,38 @@
+<%- include("../partials/header.ejs") %> <%- include("../partials/navbar.ejs")%>
+<div class="new-article-container">
+  <div class="new-article-container-inner">
+    <form action="/articles/new" method="POST">
+      <fieldset class="article">
+        <legend>You are editing: <%= article.title %></legend>
+        <!-- title -->
+        <label style="margin-bottom: 0" for="author">Author </label>
+        <input
+          type="text"
+          name="author"
+          id="author"
+          value="<%= article.author%>"
+        />
+        <label style="margin-bottom: 0" for="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          value="<%= article.title%>"
+        />
+        <!-- content -->
+        <label style="margin-top: 10px; margin-bottom: 0" for="content"
+          >Article</label
+        >
+        <textarea
+          type="text"
+          name="content"
+          id="content"
+          cols="30"
+          rows="10"
+          value="<%=article.content%>"
+        ></textarea>
+        <input type="submit" value="Edit" />
+      </fieldset>
+    </form>
+  </div>
+</div>

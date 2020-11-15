@@ -5,9 +5,12 @@
     <div class="col-md-6">
       <h1><%= article.title %></h1>
       <p>
-        <%= article.content %><small style="color: aqua">
+        <%= article.content %><small style="color: aqua"></small>
           by<%= article.author %></small
         >
+        <a class="btn btn-secondary" href="/articles/edit/<%= article._id%>" role="button"
+            >Edit Article &raquo;</a
+          >
       </p>
     </div>
   </div>
